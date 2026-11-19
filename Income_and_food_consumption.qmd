@@ -9,3 +9,32 @@ message: False
 ## project link
 
 Here is the link to the GitHub: <https://github.com/lulusiren/income-and-food-consumption>
+
+Now, we import the datasets:
+
+```{r}
+library(tidyverse)
+library(knitr)
+
+ghg <- read_csv("data/ghg-per-kg-poore.csv")
+
+#| label: table-ghg
+
+file_info <- function(df, name, source, file) {
+  tibble(
+    Item = c("Name", "Source", "File",
+             "Number of rows", "Number of columns",
+             "Column names", "Missing values (total)"),
+    Value = c(name, source, file,
+              nrow(df), ncol(df),
+              paste(names(df), collapse = ", "),
+              sum(is.na(df)))) |>
+    kable(caption = paste("Basic information about the dataset on:", name)) }
+
+file_info(
+  ghg,
+  name   = "GHG emissions per kilogram of food",
+  source = "Poore & Nemecek (2018)",
+  file   = "data/ghg-per-kg-poore.csv"
+)
+```

@@ -1,5 +1,5 @@
-.Rproj.user
-.Rhistory
-.RData
-.Ruserdata
+*.html
 Income_and_food_consumption_files/
+data/foodaps/
+data/foodaps_csv.zip
+.Rproj.user/
